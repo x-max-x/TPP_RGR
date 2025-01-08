@@ -1,0 +1,213 @@
+/* Загальні стилі */
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    background: linear-gradient(135deg, #ffcccc, #660000);
+    margin: 0;
+    padding: 0;
+    color: #660000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-rendering: optimizeLegibility;
+}
+
+/* Контейнер */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: #ffe6e6;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(102, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: translateY(-10px);
+}
+
+/* Заголовки */
+h1, h2, h3 {
+    color: #990000;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Стилі форм */
+.form-container {
+    background: linear-gradient(135deg, #ffcccc, #ff6666);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(102, 0, 0, 0.1);
+}
+
+.form-container label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #660000;
+}
+
+.form-container input,
+.form-container select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #cc6666;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #ffe6e6;
+    transition: border-color 0.3s ease;
+}
+
+.form-container input:focus,
+.form-container select:focus {
+    border-color: #ff3333;
+    outline: none;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: #990000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.form-container button:hover {
+    background: #cc0000;
+}
+
+/* Стилі таблиць */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffe6e6;
+}
+
+table th,
+table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ffcccc;
+    font-size: 1rem;
+}
+
+table th {
+    background: #990000;
+    color: #fff;
+    font-weight: 600;
+}
+
+table tr:nth-child(even) {
+    background: #ffcccc;
+}
+
+table tr:nth-child(odd) {
+    background: #ffe6e6;
+}
+
+table tr:hover {
+    background: #ffb3b3;
+    transition: background 0.3s ease;
+}
+
+/* Стилі кнопок */
+.button {
+    display: inline-block;
+    background: linear-gradient(135deg, #990000, #cc0000);
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.button:hover {
+    background: #ff6666;
+    transform: scale(1.05);
+}
+
+/* Кнопки редагування та видалення */
+.button.edit {
+    background: #ff9999;
+    color: #660000;
+}
+
+.button.delete {
+    background: #cc0000;
+    color: #fff;
+}
+
+.button.back {
+    margin-top: 25px;
+}
+
+/* Навігація */
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.navigation a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Аватар */
+.avatar {
+    width: 180px;
+    height: 180px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 50%;
+    border: 4px solid #990000;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(102, 0, 0, 0.3);
+}
+
+/* Помилки */
+.error {
+    color: #cc0000;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    .container, .form-container {
+        padding: 20px;
+    }
+
+    table th, table td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .button {
+        padding: 10px 20px;
+    }
+}
+

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Product</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Product</h1>
+
+        <form th:action="@{/products/update/{id}(id=${product.id})}" th:object="${product}" method="post" class="form-container">
+					<input type="hidden" th:field="*{id}" />
+			
+					<label for="productName">Product Name:</label>
+					<input type="text" id="productName" th:field="*{productName}" required />
+					<div th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}" class="error"></div>
+			
+					<label for="price">Price:</label>
+					<input type="number" id="price" th:field="*{price}" required />
+			
+					<label for="category">Category:</label>
+					<input type="text" id="category" th:field="*{category}" required />
+			
+					<label for="shop">Shop:</label>
+					<select id="shop" th:field="*{shop}" required>
+							<option th:each="shop : ${shops}" 
+											th:value="${shop.id}" 
+											th:text="${shop.shopName}"></option>
+					</select>
+					<div th:if="${#fields.hasErrors('shop')}" th:errors="*{shop}" class="error"></div>
+			
+					<button type="submit" class="button">Update</button>
+			</form>		
+			
+        <a href="/products" class="button back">Back to Products</a>
+    </div>
+</body>
+</html>

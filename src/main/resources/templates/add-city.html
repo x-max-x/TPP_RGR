@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add City</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Add City</h1>
+        <form th:action="@{/cities/add}" th:object="${city}" method="post" class="form-container">
+            <label for="cityName">City Name:</label>
+            <input type="text" id="cityName" th:field="*{cityName}" required />
+            <div th:if="${#fields.hasErrors('cityName')}" th:errors="*{cityName}" class="error"></div>
+
+            <label for="population">Population:</label>
+            <input type="number" id="population" th:field="*{population}" required />
+            <div th:if="${#fields.hasErrors('population')}" th:errors="*{population}" class="error"></div>
+
+            <label for="region">Region:</label>
+            <input type="text" id="region" th:field="*{region}" required />
+            <div th:if="${#fields.hasErrors('region')}" th:errors="*{region}" class="error"></div>
+
+            <button type="submit" class="button">Save</button>
+        </form>
+        <a href="/cities" class="button back">Back to Cities</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Shop</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Shop</h1>
+
+				<form th:action="@{/shops/update/{id}(id=${shop.id})}" th:object="${shop}" method="post" class="form-container">
+					<input type="hidden" th:field="*{id}" />
+			
+					<label for="shopName">Shop Name:</label>
+					<input type="text" id="shopName" th:field="*{shopName}" required />
+					<div th:if="${#fields.hasErrors('shopName')}" th:errors="*{shopName}" class="error"></div>
+			
+					<label for="city">City:</label>
+					<select id="city" th:field="*{city}" required>
+    			<option th:each="city : ${cities}" th:value="${city.cityId}" th:text="${city.cityName}"></option>
+					</select>					
+					<div th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="error"></div>
+					
+					<label for="address">Address:</label>
+					<input type="text" id="address" th:field="*{address}" required />
+					<div th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="error"></div>
+			
+					<label for="openingYear">Opening Year:</label>
+					<input type="number" id="openingYear" th:field="*{openingYear}" required />
+					<div th:if="${#fields.hasErrors('openingYear')}" th:errors="*{openingYear}" class="error"></div>
+			
+					<button type="submit" class="button">Update</button>
+			</form>
+			
+			
+			<a href="/shops" class="button back">Back to Shops</a>
+			
+    </div>
+</body>
+</html>

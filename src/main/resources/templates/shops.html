@@ -1,0 +1,51 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Shops</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Shops</h1>
+				<div th:if="${isAdmin}">
+        <a href="/shops/add" class="button">Add Shop</a>
+			</div>
+			<div th:if="${!isAdmin}" class="warning-message">
+				<p style= "color: #b61d1d;" >Note: You are in view-only mode. Admin rights are required for modifications.</p>
+		</div>
+				<div th:if="${warning}" class="warning">
+					<p th:text="${warning}"></p>
+			</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Shop Name</th>
+                    <th>City</th>
+                    <th>Address</th>
+                    <th>Opening Year</th>
+                    <th th:if="${isAdmin}">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="shop : ${shops}">
+                    <td th:text="${shop.id}"></td>
+                    <td th:text="${shop.shopName}"></td>
+                    <td th:text="${shop.city.cityName}"></td>
+                    <td th:text="${shop.address}"></td>
+                    <td th:text="${shop.openingYear}"></td>
+                    <td th:if="${isAdmin}" class="actions">
+                        <a th:href="@{/shops/edit/{id}(id=${shop.id})}" class="button edit">Edit</a>
+                        <a th:href="@{/shops/delete/{id}(id=${shop.id})}" class="button delete">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/home" class="button back">Back to Home</a>
+    </div>
+</body>
+</html>
+
+
+

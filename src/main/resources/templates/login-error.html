@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error 401 - Invalid Credentials</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div class="container" style="text-align: center;">
+       
+        <div class="header" style="margin-bottom: 30px; display: flex; justify-content: center; align-items: center;">
+            <h1 style="color: #d9534f; font-size: 2rem;">Error 401</h1>
+        </div>
+
+        
+        <h2 style="color: #555; font-size: 1.5rem; margin-bottom: 20px;">
+            Invalid login or password.
+        </h2>
+        <p style="color: #777; font-size: 1rem; margin-bottom: 30px;">
+            Please check your username and password and try again.
+        </p>
+
+       
+        <div class="navigation">
+            <a th:href="@{/login}" class="button" style="margin-right: 10px;">Try Again</a>
+            <a th:href="@{/}" class="button">Homepage</a>
+        </div>
+    </div>
+</body>
+</html>

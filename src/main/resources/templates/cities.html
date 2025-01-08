@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cities</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Cities</h1>
+				<div th:if="${isAdmin}">
+        <a href="/cities/add" class="button">Add City</a>
+			</div>
+			<div th:if="${!isAdmin}" class="warning-message">
+				<p style= "color: #b61d1d;" >Note: You are in view-only mode. Admin rights are required for modifications.</p>
+		</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>City Name</th>
+                    <th>Population</th>
+                    <th>Region</th>
+                    <th th:if="${isAdmin}">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="city : ${cities}">
+                    <td th:text="${city.CityId}"></td>
+                    <td th:text="${city.cityName}"></td>
+                    <td th:text="${city.population}"></td>
+                    <td th:text="${city.region}"></td>
+                    <td th:if="${isAdmin}" class="actions">
+                        <a th:href="@{/cities/edit/{id}(id=${city.CityId})}" class="button edit">Edit</a>
+                        <a th:href="@{/cities/delete/{id}(id=${city.CityId})}" class="button delete">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/home" class="button back">Back to Home</a>
+    </div>
+</body>
+</html>

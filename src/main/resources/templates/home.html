@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Office Equipment Management</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <style>            
+    .container {
+        display: flex;
+        flex-direction: column; /* Всі елементи розташовані вертикально */
+        align-items: center;
+        padding: 50px;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .text-content {
+        text-align: center; /* Текст вирівняно по центру */
+        margin-bottom: 20px; /* Відступ між текстом і кнопкою Login */
+    }
+
+    .header {
+        margin-bottom: 20px; /* Відступ між Login і роздільною лінією */
+    }
+
+    .divider {
+        position: relative;
+        text-align: center;
+        width: 100%;
+        margin: 20px 0; /* Відступи між Login і кнопками */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .divider::before,
+    .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #ccc; /* Колір лінії */
+        margin: 0 10px;
+    }
+
+    .divider span {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #888; /* Колір тексту "or" */
+        background: #ffffff;
+        padding: 0 10px; /* Додано фон, щоб "or" не накладалося на лінію */
+    }
+
+    .navigation {
+        display: flex;
+        justify-content: center;
+        gap: 20px; /* Відстань між кнопками */
+    }
+
+    .button {
+        text-decoration: none;
+        display: inline-block;
+        background: linear-gradient(135deg, #d72626, #ff5a5a);
+        color: #fff;
+        padding: 15px 40px;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 700;
+        text-align: center;
+        transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .button:hover {
+        background: #fff;
+        color: #3498db;
+        border-color: #3498db;
+    }
+
+    @media (max-width: 768px) {
+        .navigation {
+            flex-direction: column; /* На вузьких екранах кнопки в стовпчик */
+        }
+        .button {
+            width: 100%; /* Кнопки на всю ширину */
+        }
+    }
+</style>
+    </style>
+</head>
+<body>
+	<div class="container">
+    <div class="text-content">
+        <h1>Welcome to Office Equipment System</h1>
+        <h2>Easily Manage Cities, Shops, and Products</h2>
+    </div>
+
+    <div class="header">
+        <div th:unless="${username}" class="login-link">
+            <a th:href="@{/login}" class="button">Login</a>
+        </div>
+        <div th:if="${username}" class="user-info" style="display: flex; align-items: center;">
+            <p style="font-size: 1.2rem; font-weight: 500; color: #4a267c; margin-right: 10px;font-size: 1.1rem; font-weight: 600;">
+                Welcome, <span th:text="${username}"></span>
+            </p>
+            <form th:action="@{/logout}" method="post" style="display: inline;">
+                <button type="submit" class="button delete" style="margin-top: 0;">Logout</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="divider">
+        <span>or</span>
+    </div>
+
+    <div class="navigation">
+        <a th:href="@{/cities}" class="button">Cities</a>
+        <a th:href="@{/shops}" class="button">Shops</a>
+        <a th:href="@{/products}" class="button">Products</a>
+    </div>
+</div>
+
+</body>
+</html>
